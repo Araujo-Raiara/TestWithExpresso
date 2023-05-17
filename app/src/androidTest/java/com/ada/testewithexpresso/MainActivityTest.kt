@@ -19,6 +19,7 @@ class MainActivityTest {
 
     @Test
     fun testRecyclerViewItemClick() {
+        Thread.sleep(5)
         val LIST_POSITION = 14
         onView(ViewMatchers.withId(R.id.rv_characters))
             .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(LIST_POSITION))
