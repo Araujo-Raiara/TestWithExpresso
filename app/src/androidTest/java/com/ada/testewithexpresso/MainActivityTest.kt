@@ -17,19 +17,24 @@ class MainActivityTest {
     @get: Rule
     var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
+
+    val LIST_POSITION = 14
+
     @Test
     fun testRecyclerViewItemClick() {
         Thread.sleep(5000)
-        val LIST_POSITION = 14
+        onView(ViewMatchers.withId(R.id.rv_characters)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                LIST_POSITION,
+                ViewActions.click()
+            )
+        )
+    }
+
+    @Test
+    fun testRecyclerScrollToPosition() {
         onView(ViewMatchers.withId(R.id.rv_characters))
             .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(LIST_POSITION))
-            .perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                    LIST_POSITION,
-                    ViewActions.click()
-                )
-            )
-
     }
 }
 
